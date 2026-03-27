@@ -1,0 +1,117 @@
+.hero {
+  background: linear-gradient(145deg, #0f4c35 0%, #1a7f5a 55%, #1d9068 100%);
+  padding: 5rem 2rem 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-circles {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+}
+.hc {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+}
+.hc1 { width: 400px; height: 400px; right: -100px; top: -100px; }
+.hc2 { width: 250px; height: 250px; left: -50px;  bottom: -80px; }
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: white;
+  border-radius: 30px;
+  padding: 0.35rem 1.1rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+  font-family: 'Lora', serif;
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  color: white;
+  line-height: 1.2;
+  margin-bottom: 1.1rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero h1 em {
+  font-style: italic;
+  color: #86efac;
+}
+
+.hero-desc {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  max-width: 520px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.75;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-hero-primary {
+  background: white;
+  color: var(--green);
+  padding: 0.85rem 2rem;
+  border-radius: 11px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.btn-hero-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+}
+.btn-hero-primary:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 3px;
+}
+
+.btn-hero-outline {
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.55);
+  padding: 0.85rem 2rem;
+  border-radius: 11px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.btn-hero-outline:hover {
+  border-color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+.btn-hero-outline:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 3px;
+}
+
+@media (max-width: 760px) {
+  .hero { padding: 4rem 1.25rem 3rem; }
+}

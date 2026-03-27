@@ -1,0 +1,87 @@
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--border);
+  padding: 0.9rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Lora', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--green);
+  text-decoration: none;
+}
+
+.logo-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--green);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.logo-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  padding: 0.5rem 0.9rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--slate-mid);
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+.nav-link:hover,
+.nav-link:focus {
+  background: var(--green-pale);
+  color: var(--green);
+  outline: none;
+}
+.nav-link:focus-visible {
+  box-shadow: var(--focus-ring);
+}
+
+.btn-nav {
+  background: var(--green);
+  color: white;
+  padding: 0.55rem 1.2rem;
+  border-radius: 9px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+.btn-nav:hover { background: #15694a; }
+.btn-nav:focus-visible {
+  outline: 3px solid var(--green);
+  outline-offset: 3px;
+}
+
+@media (max-width: 760px) {
+  .nav-links { display: none; }
+}

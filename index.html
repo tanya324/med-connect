@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MedConnect — Healthcare Support</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+
+  <link rel="stylesheet" href="css/base.css"/>
+  <link rel="stylesheet" href="css/nav.css"/>
+  <link rel="stylesheet" href="css/hero.css"/>
+  <link rel="stylesheet" href="css/forms.css"/>
+  <link rel="stylesheet" href="css/triage.css"/>
+  <link rel="stylesheet" href="css/sections.css"/>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- ─── NAVIGATION ─────────────────────────────────────── -->
+  <nav role="navigation" aria-label="Main navigation">
+    <a href="#" class="nav-logo" aria-label="MedConnect home">
+      <div class="logo-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
+          <path d="M12 5v14M5 12h14"/>
+        </svg>
+      </div>
+      MedConnect
+    </a>
+    <div class="nav-links" role="list">
+      <a href="#forms"  class="nav-link" role="listitem">Register</a>
+      <a href="#ai"     class="nav-link" role="listitem">AI Symptom Check</a>
+      <a href="#how"    class="nav-link" role="listitem">How It Works</a>
+    </div>
+    <a href="#forms" class="btn-nav">Get Support →</a>
+  </nav>
+
+  <!-- ─── HERO ──────────────────────────────────────────────── -->
+  <header class="hero" role="banner">
+    <div class="hero-circles" aria-hidden="true">
+      <div class="hc hc1"></div>
+      <div class="hc hc2"></div>
+    </div>
+    <div class="hero-badge" aria-label="Concept healthcare platform">🏥 Healthcare Support Platform</div>
+    <h1>Connecting patients<br/>with <em>the right care</em></h1>
+    <p class="hero-desc">MedConnect makes it simple to request support, volunteer your time, and understand your symptoms — all in one accessible place.</p>
+    <div class="hero-actions">
+      <a href="#forms" class="btn-hero-primary">I need support</a>
+      <a href="#ai"    class="btn-hero-outline">Check my symptoms</a>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ─── QUICK ACCESS ─────────────────────────────────────── -->
+    <div class="quick-access" role="navigation" aria-label="Quick access">
+      <div class="qa-inner">
+        <p class="qa-label">How can we help?</p>
+        <div class="qa-grid">
+          <a href="#forms" class="qa-card" onclick="openTab('patient', event)">
+            <span class="qa-icon" aria-hidden="true">🙋</span>
+            <h3>I'm a Patient</h3>
+            <p>Request medical or personal support</p>
+          </a>
+          <a href="#forms" class="qa-card" onclick="openTab('volunteer', event)">
+            <span class="qa-icon" aria-hidden="true">🤝</span>
+            <h3>I Want to Volunteer</h3>
+            <p>Sign up to help patients near you</p>
+          </a>
+          <a href="#ai" class="qa-card">
+            <span class="qa-icon" aria-hidden="true">🤖</span>
+            <h3>Check Symptoms</h3>
+            <p>AI-guided triage in under 2 minutes</p>
+          </a>
+          <a href="#forms" class="qa-card" onclick="openTab('contact', event)">
+            <span class="qa-icon" aria-hidden="true">💬</span>
+            <h3>Contact Us</h3>
+            <p>Questions, partnerships, or feedback</p>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── FORMS SECTION ────────────────────────────────────── -->
+    <section id="forms" aria-labelledby="forms-heading">
+      <div class="inner">
+        <div class="section-header">
+          <div class="section-tag">Registration &amp; Contact</div>
+          <h2 class="section-title" id="forms-heading">Fill in your details</h2>
+        </div>
+
+        <!-- Tabs -->
+        <div class="form-tabs-wrap" role="tablist" aria-label="Form selection">
+          <button class="ftab active" role="tab" aria-selected="true"  aria-controls="panel-patient"  id="tab-patient"   onclick="switchTab('patient', this)">🙋 Patient Support</button>
+          <button class="ftab"        role="tab" aria-selected="false" aria-controls="panel-volunteer" id="tab-volunteer" onclick="switchTab('volunteer', this)">🤝 Volunteer Registration</button>
+          <button class="ftab"        role="tab" aria-selected="false" aria-controls="panel-contact"   id="tab-contact"   onclick="switchTab('contact', this)">💬 Contact Us</button>
+        </div>
+
+        <!-- Patient Form -->
+        <div class="fpanel active" id="panel-patient" role="tabpanel" aria-labelledby="tab-patient">
+          <div class="form-card">
+            <h3>Patient Support Request</h3>
+            <p class="form-intro">Tell us how we can help. A volunteer or coordinator will reach out within 24 hours. All fields marked * are required.</p>
+            <p class="required-note" aria-hidden="true">* Required field</p>
+            <form novalidate onsubmit="handleSubmit(event, 'patient-success', 'Your support request has been received!')">
+              <div class="fgrid">
+                <div class="fg">
+                  <label for="p-name">Full Name *</label>
+                  <input type="text" id="p-name" placeholder="e.g. Priya Sharma" required autocomplete="name" aria-required="true"/>
+                </div>
+                <div class="fg">
+                  <label for="p-age">Age *</label>
+                  <input type="number" id="p-age" placeholder="e.g. 45" min="1" max="120" required aria-required="true"/>
+                </div>
+                <div class="fg">
+                  <label for="p-phone">Phone Number * <span class="hint">We'll use this to contact you</span></label>
+                  <input type="tel" id="p-phone" placeholder="+91 98765 43210" required autocomplete="tel" aria-required="true"/>
+                </div>
+                <div class="fg">
+                  <label for="p-city">City / Location *</label>
+                  <input type="text" id="p-city" placeholder="e.g. Mumbai" required/>
+                </div>
+                <div class="fg full">
+                  <label for="p-type">Type of Support Needed *</label>
+                  <select id="p-type" required aria-required="true">
+                    <option value="">— Select the support you need —</option>
+                    <option value="consult">Medical guidance / consultation help</option>
+                    <option value="transport">Transport to clinic or hospital</option>
+                    <option value="medicine">Medicine procurement or delivery</option>
+                    <option value="mental">Mental health or emotional support</option>
+                    <option value="homecare">Home care assistance</option>
+                    <option value="recovery">Post-surgery or recovery support</option>
+                    <option value="other">Other (please describe below)</option>
+                  </select>
+                </div>
+                <div class="fg full">
+                  <label for="p-urgency">How urgent is your need? *</label>
+                  <select id="p-urgency" required aria-required="true">
+                    <option value="">— Select urgency level —</option>
+                    <option value="low">Not urgent — within a week is fine</option>
+                    <option value="medium">Moderate — within 2–3 days</option>
+                    <option value="high">Urgent — within 24 hours</option>
+                    <option value="emergency">Emergency — please contact me immediately</option>
+                  </select>
+                </div>
+                <div class="fg full">
+                  <label for="p-desc">Describe your situation <span class="hint">(optional but helpful)</span></label>
+                  <textarea id="p-desc" placeholder="Briefly describe what you're going through and any specific needs..."></textarea>
+                </div>
+              </div>
+              <button type="submit" class="btn-submit">Submit Request →</button>
+              <div class="form-success" id="patient-success" role="alert" aria-live="polite">
+                <span class="suc-icon" aria-hidden="true">✅</span>
+                <div>
+                  <p class="suc-title">Request received!</p>
+                  <p class="suc-text">Thank you. A MedConnect coordinator will contact you within 24 hours. Please keep your phone nearby.</p>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Volunteer Form -->
+        <div class="fpanel" id="panel-volunteer" role="tabpanel" aria-labelledby="tab-volunteer" hidden>
+          <div class="form-card">
+            <h3>Volunteer Registration</h3>
+            <p class="form-intro">Join our community of helpers. Match your availability and skills with patients who need you. All fields marked * are required.</p>
+            <p class="required-note" aria-hidden="true">* Required field</p>
+            <form novalidate onsubmit="handleSubmit(event, 'volunteer-success', 'Your volunteer registration was submitted!')">
+              <div class="fgrid">
+                <div class="fg">
+                  <label for="v-name">Full Name *</label>
+                  <input type="text" id="v-name" placeholder="e.g. Rahul Verma" required autocomplete="name" aria-required="true"/>
+                </div>
+                <div class="fg">
+                  <label for="v-email">Email Address *</label>
+                  <input type="email" id="v-email" placeholder="you@example.com" required autocomplete="email" aria-required="true"/>
+                </div>
+                <div class="fg">
+                  <label for="v-phone">Phone Number *</label>
+                  <input type="tel" id="v-phone" placeholder="+91 98765 43210" required autocomplete="tel" aria-required="true"/>
+                </div>
+                <div class="fg">
+                  <label for="v-city">City / Area *</label>
+                  <input type="text" id="v-city" placeholder="e.g. Delhi" required/>
+                </div>
+                <div class="fg full">
+                  <label for="v-role">Your Background *</label>
+                  <select id="v-role" required aria-required="true">
+                    <option value="">— Select your role —</option>
+                    <option value="student">Medical / Nursing student</option>
+                    <option value="nurse">Nurse or healthcare worker</option>
+                    <option value="doctor">Doctor</option>
+                    <option value="pharmacist">Pharmacist</option>
+                    <option value="social">Social worker / counsellor</option>
+                    <option value="general">General volunteer (no medical background)</option>
+                  </select>
+                </div>
+                <div class="fg full">
+                  <label>How can you help? <span class="hint">(select all that apply)</span></label>
+                  <div class="check-group" role="group" aria-label="Volunteer help options">
+                    <label class="check-item"><input type="checkbox" value="transport"/><span>Patient transport</span></label>
+                    <label class="check-item"><input type="checkbox" value="guidance"/><span>Medical guidance</span></label>
+                    <label class="check-item"><input type="checkbox" value="emotional"/><span>Emotional support</span></label>
+                    <label class="check-item"><input type="checkbox" value="delivery"/><span>Medicine delivery</span></label>
+                    <label class="check-item"><input type="checkbox" value="homecare"/><span>Home care visits</span></label>
+                    <label class="check-item"><input type="checkbox" value="admin"/><span>Administrative help</span></label>
+                  </div>
+                </div>
+                <div class="fg full">
+                  <label for="v-avail">Availability *</label>
+                  <select id="v-avail" required aria-required="true">
+                    <option value="">— When can you volunteer? —</option>
+                    <option value="weekdays">Weekdays (9am–5pm)</option>
+                    <option value="weekends">Weekends only</option>
+                    <option value="evenings">Evenings (after 6pm)</option>
+                    <option value="flexible">Flexible / as needed</option>
+                  </select>
+                </div>
+                <div class="fg full">
+                  <label for="v-why">Why do you want to volunteer? <span class="hint">(optional)</span></label>
+                  <textarea id="v-why" placeholder="Tell us a little about what motivates you to help..."></textarea>
+                </div>
+              </div>
+              <button type="submit" class="btn-submit">Register as Volunteer →</button>
+              <div class="form-success" id="volunteer-success" role="alert" aria-live="polite">
+                <span class="suc-icon" aria-hidden="true">✅</span>
+                <div>
+                  <p class="suc-title">Registration complete!</p>
+                  <p class="suc-text">Welcome to MedConnect. We'll match you with patients in your area and send details to your email within 48 hours.</p>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="fpanel" id="panel-contact" role="tabpanel" aria-labelledby="tab-contact" hidden>
+          <div class="form-card">
+            <h3>Contact MedConnect</h3>
+            <p class="form-intro">Have a question, partnership idea, or feedback? We read every message and respond within 1 business day.</p>
+            <p class="required-note" aria-hidden="true">* Required field</p>
+            <form novalidate onsubmit="handleSubmit(event, 'contact-success', 'Message sent! We\'ll reply within 24 hours.')">
+              <div class="fgrid">
+                <div class="fg">
+                  <label for="c-name">Your Name *</label>
+                  <input type="text" id="c-name" placeholder="Full name" required autocomplete="name" aria-required="true"/>
+                </div>
+                <div class="fg">
+                  <label for="c-email">Email *</label>
+                  <input type="email" id="c-email" placeholder="you@example.com" required autocomplete="email" aria-required="true"/>
+                </div>
+                <div class="fg full">
+                  <label for="c-subject">Subject *</label>
+                  <select id="c-subject" required aria-required="true">
+                    <option value="">— What is this about? —</option>
+                    <option>Partnership or clinic affiliation</option>
+                    <option>Accessibility concern</option>
+                    <option>Technical issue with the app</option>
+                    <option>General feedback or suggestion</option>
+                    <option>Media or press inquiry</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div class="fg full">
+                  <label for="c-msg">Message *</label>
+                  <textarea id="c-msg" placeholder="Write your message here..." required aria-required="true"></textarea>
+                </div>
+              </div>
+              <button type="submit" class="btn-submit">Send Message →</button>
+              <div class="form-success" id="contact-success" role="alert" aria-live="polite">
+                <span class="suc-icon" aria-hidden="true">✅</span>
+                <div>
+                  <p class="suc-title">Message sent!</p>
+                  <p class="suc-text">Thanks for reaching out. Our team will reply to your email within 1 business day.</p>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── AI SYMPTOM CHECKER ───────────────────────────────── -->
+    <section id="ai" aria-labelledby="ai-heading">
+      <div class="inner">
+        <div class="section-header">
+          <div class="section-tag">✨ AI Feature</div>
+          <h2 class="section-title" id="ai-heading">Smart Symptom Checker</h2>
+          <p class="section-desc">Answer 3 quick questions and get a clear, colour-coded care recommendation instantly.</p>
+        </div>
+
+        <div class="ai-layout">
+
+          <!-- Left: explanation -->
+          <div class="ai-explain">
+            <h3>Why this matters</h3>
+            <p>Many patients don't know whether to rest at home, visit a clinic, or head straight to the ER. This AI-guided triage helps you decide quickly — without needing to call anyone first.</p>
+            <p>It uses symptom patterns and severity to give a <strong>colour-coded recommendation</strong> in under 2 minutes.</p>
+            <div class="ai-steps">
+              <div class="ai-step">
+                <div class="ai-step-num" aria-hidden="true">1</div>
+                <div class="ai-step-body">
+                  <strong>Select your symptoms</strong>
+                  <span>Pick everything you're currently experiencing</span>
+                </div>
+              </div>
+              <div class="ai-step">
+                <div class="ai-step-num" aria-hidden="true">2</div>
+                <div class="ai-step-body">
+                  <strong>Rate how severe it feels</strong>
+                  <span>Mild discomfort, moderate concern, or something feels seriously wrong</span>
+                </div>
+              </div>
+              <div class="ai-step">
+                <div class="ai-step-num" aria-hidden="true">3</div>
+                <div class="ai-step-body">
+                  <strong>Tell us how long it's been</strong>
+                  <span>Duration helps determine urgency</span>
+                </div>
+              </div>
+              <div class="ai-step">
+                <div class="ai-step-num" aria-hidden="true">4</div>
+                <div class="ai-step-body">
+                  <strong>Get your recommendation</strong>
+                  <span>🟢 Self-care &nbsp;|&nbsp; 🟡 See a doctor &nbsp;|&nbsp; 🔴 Go to ER</span>
+                </div>
+              </div>
+            </div>
+            <div class="ai-note" role="note">
+              <strong>⚠️ Important disclaimer</strong>
+              This tool is a concept-level guide only. It does not replace a real medical diagnosis. Always consult a qualified healthcare professional for medical decisions.
+            </div>
+          </div>
+
+          <!-- Right: interactive widget -->
+          <div class="ai-widget" role="region" aria-label="AI symptom checker">
+            <div class="aw-header">
+              <div class="aw-title"><span aria-hidden="true">🤖</span> AI Symptom Checker</div>
+              <div class="aw-live" aria-label="Tool is active"><div class="aw-dot" aria-hidden="true"></div> Active</div>
+            </div>
+            <div class="aw-body">
+
+              <!-- Progress bar -->
+              <div class="aw-progress" role="progressbar" aria-label="Step progress" aria-valuenow="1" aria-valuemin="1" aria-valuemax="3" id="aw-progress">
+                <div class="awp-step active" id="pb1"></div>
+                <div class="awp-step" id="pb2"></div>
+                <div class="awp-step" id="pb3"></div>
+              </div>
+
+              <!-- Step 1 -->
+              <div class="aw-step-panel active" id="aws1">
+                <div class="aw-step-label" aria-live="polite">Step 1 of 3 — Select all symptoms you have</div>
+                <div class="sym-grid" role="group" aria-label="Symptoms">
+                  <button type="button" class="sym-btn" onclick="toggleSym(this,'fever')"   aria-pressed="false"><span class="sym-icon" aria-hidden="true"></span>Fever</button>
+                  <button type="button" class="sym-btn" onclick="toggleSym(this,'cough')"   aria-pressed="false"><span class="sym-icon" aria-hidden="true"></span>Cough</button>
+                  <button type="button" class="sym-btn" onclick="toggleSym(this,'fatigue')" aria-pressed="false"><span class="sym-icon" aria-hidden="true"></span>Fatigue</button>
+                  <button type="button" class="sym-btn" onclick="toggleSym(this,'headache')" aria-pressed="false"><span class="sym-icon" aria-hidden="true"></span>Headache</button>
+                  <button type="button" class="sym-btn" onclick="toggleSym(this,'chest')"   aria-pressed="false"><span class="sym-icon" aria-hidden="true"></span>Chest Pain</button>
+                  <button type="button" class="sym-btn" onclick="toggleSym(this,'breath')"  aria-pressed="false"><span class="sym-icon" aria-hidden="true"></span>Breathlessness</button>
+                  <button type="button" class="sym-btn" onclick="toggleSym(this,'nausea')"  aria-pressed="false"><span class="sym-icon" aria-hidden="true"></span>Nausea / Vomiting</button>
+                  <button type="button" class="sym-btn" onclick="toggleSym(this,'dizzy')"   aria-pressed="false"><span class="sym-icon" aria-hidden="true"></span>Dizziness</button>
+                  <button type="button" class="sym-btn" onclick="toggleSym(this,'rash')"    aria-pressed="false"><span class="sym-icon" aria-hidden="true"></span>Skin Rash</button>
+                  <button type="button" class="sym-btn" onclick="toggleSym(this,'joint')"   aria-pressed="false"><span class="sym-icon" aria-hidden="true"></span>Joint / Body Pain</button>
+                </div>
+                <div class="aw-nav">
+                  <button type="button" class="aw-next" onclick="goStep(2)" id="btn-s1-next" aria-label="Continue to step 2">Next →</button>
+                </div>
+              </div>
+
+              <!-- Step 2 -->
+              <div class="aw-step-panel" id="aws2">
+                <div class="aw-step-label">Step 2 of 3 — How severe do these symptoms feel?</div>
+                <div class="sev-row" role="group" aria-label="Severity options">
+                  <button type="button" class="sev-opt mild"     onclick="selectSev(this,'mild')"     aria-pressed="false">🟢 Mild<br/><small>Uncomfortable</small></button>
+                  <button type="button" class="sev-opt moderate" onclick="selectSev(this,'moderate')" aria-pressed="false">🟡 Moderate<br/><small>Worried</small></button>
+                  <button type="button" class="sev-opt severe"   onclick="selectSev(this,'severe')"   aria-pressed="false">🔴 Severe<br/><small>Very concerned</small></button>
+                </div>
+                <div class="aw-nav">
+                  <button type="button" class="aw-back" onclick="goStep(1)">← Back</button>
+                  <button type="button" class="aw-next" onclick="goStep(3)" id="btn-s2-next" disabled aria-label="Continue to step 3">Next →</button>
+                </div>
+              </div>
+
+              <!-- Step 3 -->
+              <div class="aw-step-panel" id="aws3">
+                <div class="aw-step-label">Step 3 of 3 — How long have you had these symptoms?</div>
+                <div class="aw-option-row" role="group" aria-label="Duration options">
+                  <button type="button" class="aw-opt" onclick="selectDuration(this,'hours')" aria-pressed="false"><span class="aw-opt-icon" aria-hidden="true"></span><span>A few hours (today)</span></button>
+                  <button type="button" class="aw-opt" onclick="selectDuration(this,'days')"  aria-pressed="false"><span class="aw-opt-icon" aria-hidden="true"></span><span>1–3 days</span></button>
+                  <button type="button" class="aw-opt" onclick="selectDuration(this,'week')"  aria-pressed="false"><span class="aw-opt-icon" aria-hidden="true"></span><span>4–7 days</span></button>
+                  <button type="button" class="aw-opt" onclick="selectDuration(this,'long')"  aria-pressed="false"><span class="aw-opt-icon" aria-hidden="true"></span><span>More than a week</span></button>
+                </div>
+                <div class="aw-nav">
+                  <button type="button" class="aw-back" onclick="goStep(2)">← Back</button>
+                  <button type="button" class="aw-next" onclick="showResult()" id="btn-s3-next" disabled aria-label="Get my recommendation">See Result →</button>
+                </div>
+              </div>
+
+              <!-- Result Panel -->
+              <div class="aw-step-panel" id="aws-result">
+                <div class="aw-step-label">Your recommendation</div>
+                <div class="aw-result" id="result-box" role="alert" aria-live="polite">
+                  <div class="res-level" id="res-level">
+                    <div class="res-dot" id="res-dot"></div>
+                    <span id="res-title"></span>
+                  </div>
+                  <p class="res-summary" id="res-summary"></p>
+                  <div class="res-actions">
+                    <p class="res-action-title">What to do next</p>
+                    <ul class="res-action-list" id="res-actions"></ul>
+                  </div>
+                </div>
+                <button type="button" class="res-restart" onclick="resetTriage()" aria-label="Start the symptom checker again">↩ Check different symptoms</button>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── HOW IT WORKS ─────────────────────────────────────── -->
+    <section id="how" aria-labelledby="how-heading">
+      <div class="inner">
+        <div class="section-header">
+          <div class="section-tag">Process</div>
+          <h2 class="section-title" id="how-heading">How MedConnect works</h2>
+          <p class="section-desc">Four simple steps from first contact to real support.</p>
+        </div>
+        <div class="how-grid">
+          <div class="how-card">
+            <div class="how-num" aria-hidden="true">1</div>
+            <span class="how-icon-big" aria-hidden="true"></span>
+            <h4>You Register</h4>
+            <p>Fill in our simple form — takes under 3 minutes. No account or password needed.</p>
+          </div>
+          <div class="how-card">
+            <div class="how-num" aria-hidden="true">2</div>
+            <span class="how-icon-big" aria-hidden="true"></span>
+            <h4>Smart Matching</h4>
+            <p>Our system matches you with available volunteers based on your location and needs.</p>
+          </div>
+          <div class="how-card">
+            <div class="how-num" aria-hidden="true">3</div>
+            <span class="how-icon-big" aria-hidden="true"></span>
+            <h4>We Connect You</h4>
+            <p>A coordinator confirms your match and introduces you to your volunteer within 24 hours.</p>
+          </div>
+          <div class="how-card">
+            <div class="how-num" aria-hidden="true">4</div>
+            <span class="how-icon-big" aria-hidden="true"></span>
+            <h4>Supported</h4>
+            <p>Receive the help you need, with follow-up check-ins to make sure everything is going well.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ─── FOOTER ────────────────────────────────────────────── -->
+  <footer role="contentinfo">
+    <div class="footer-logo" aria-label="MedConnect">
+      <div class="logo-icon" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
+          <path d="M12 5v14M5 12h14"/>
+        </svg>
+      </div>
+      MedConnect
+    </div>
+    <p>A concept healthcare support platform</p>
+    <p class="footer-sub">Connecting patients, volunteers &amp; healthcare professionals</p>
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="#forms">Patient Support</a>
+      <a href="#forms">Volunteer</a>
+      <a href="#ai">Symptom Checker</a>
+      <a href="#how">How It Works</a>
+      <a href="#forms">Contact</a>
+    </nav>
+    <p class="disclaimer">
+      <strong>Disclaimer:</strong> MedConnect is a concept-level project created for demonstration purposes.
+      The AI Symptom Checker provides general guidance only and does not constitute medical advice.
+      Always seek advice from a qualified healthcare professional for any medical concerns.
+      In an emergency, call your local emergency number immediately.
+    </p>
+  </footer>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true">
+    <span aria-hidden="true">✅</span> <span id="toast-msg"></span>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/tabs.js"></script>
+  <script src="js/forms.js"></script>
+  <script src="js/triage.js"></script>
+
+</body>
+</html>
